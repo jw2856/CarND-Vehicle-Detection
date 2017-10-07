@@ -19,7 +19,7 @@ settings = {
     'orient': 9, #
     'pix_per_cell': 8,
     'cell_per_block': 2, # helps with normalization and shadows
-    'hog_channel': 0,
+    'hog_channel': 'ALL',
     'spatial_size': (32, 32), # spatial binning dimensions
     'hist_bins': 32,
     'spatial_feat': True,
@@ -27,6 +27,9 @@ settings = {
     'hog_feat': True,
     'vis': True
 }
+
+path = 'test_images/*'
+example_images = glob.glob(path)
 
 # sample image once on the entire image and then take each block separately
 
@@ -38,6 +41,10 @@ notcars = helpers.read_filenames_into_array('non-vehicles/', write_to_file=True,
 print('Number of non-vehicle images found:', len(notcars))
 
 # helpers.visualize_car_notcar(cars, notcars, settings, 'output_images/car_notcar_visualization_YCrCb_channel0.png')
+
+# helpers.visualize_bin_spatial(cars, notcars, (32, 32), 'output_images/bin_spatial_2.png')
+
+# helpers.visualize_color_hist(example_images[0], 'LUV', ['L', 'U', 'V'], 32, (0, 255), 'output_images/color_hist_LUV.png')
 
 if TRAIN:
     t=time.time()
@@ -79,11 +86,6 @@ if TRAIN:
 else:
     svc = joblib.load('model-YCrCb.pkl')
     X_scaler = joblib.load('scaler.pkl')
-
-# ----------------------------------------------------------------------------
-
-path = 'test_images/*'
-example_images = glob.glob(path)
 
 # ----------------------------------------------------------------------------
 
@@ -137,7 +139,7 @@ def find_cars_using_sliding_windows():
         titles.append('Heat Map')
         print(time.time()-t1, 'seconds to process one image searching', num_windows, 'windows')
 
-    helpers.visualize(plt.figure(figsize=(18,24)), 6, 3, images, titles, 'output_images/test_images_result_YCrCb_3windows_75overlap_2threshold-todelete.png')
+    helpers.visualize(plt.figure(figsize=(18,24)), 6, 3, images, titles, 'output_images/test_images-todelete.png')
 
 def find_cars_using_subsampling():
     img = mpimg.imread('test_images/test1.jpg')
@@ -199,9 +201,9 @@ def process_image(img):
     draw_image = draw_labeled_bboxes(draw_image, labels)
     return draw_image
 
-# test_output = 'project-mean-10frames-2threshold-3windows.mp4'
-# # clip = VideoFileClip('test_video.mp4')
-# clip = VideoFileClip('project_video.mp4')
+# test_output = 'test-mean-sdafdaf.mp4'
+# clip = VideoFileClip('test_video.mp4')
+# # clip = VideoFileClip('project_video.mp4')
 # test_clip = clip.fl_image(process_image)
 # test_clip.write_videofile(test_output, audio=False)
 

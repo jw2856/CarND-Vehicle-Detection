@@ -17,15 +17,24 @@ The goals / steps of this project are the following:
 [hog5]: ./output_images/car_notcar_visualization_YCrCb_channel1.png
 [hog6]: ./output_images/car_notcar_visualization_YCrCb_channel2.png
 
+[spatial1]: ./output_images/bin_spatial_1.png
+[spatial2]: ./output_images/bin_spatial_2.png
+
+[colorhist1]: ./output_images/color_hist_HLS.png
+[colorhist2]: ./output_images/color_hist_HSV.png
+[colorhist3]: ./output_images/color_hist_LUV.png
+[colorhist4]: ./output_images/color_hist_RGB.png
+[colorhist5]: ./output_images/color_hist_YCrCb.png
+[colorhist6]: ./output_images/color_hist_YUV.png
+
 [video1]: ./project_video.mp4
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
-###Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
+### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 ---
-### Writeup / README
 
-####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  [Here](https://github.com/udacity/CarND-Vehicle-Detection/blob/master/writeup_template.md) is a template writeup for this project you can use as a guide and a starting point.  
+### Writeup / README
 
 You're reading it!
 
@@ -45,7 +54,7 @@ In `single_img_features`, the features for each image are extracted, and can ext
 
 HOG stands for Histogram of Oriented Gradients, and is a porcine way of saying that it lets us extract a directional gradient of each pixel. The algorithm calculates the gradient of each pixel and its surrounding pixels, and then returns a histogram that corresponds to the sum of the gradient values in each direction. This results in an image that very roughly detects edges and shapes.
 
-Here are some examples of HOG features extracted for some different color spaces and channels:
+Here are some examples of HOG features extracted for randomly sampled cars and not cars taken from the dataset, using different color spaces and channels:
 
 **HSV Channel 1**
 
@@ -73,16 +82,41 @@ Here are some examples of HOG features extracted for some different color spaces
 
 #### Spatial binning
 
-Spatial binning downsamples an image to a lower resolution, which speeds up processing while (hopefully) preserving the useful information in an image.
+Spatial binning downsamples an image to a lower resolution, which speeds up processing while (hopefully) preserving the useful information in an image. Here are two examples of spatially binned cars and not cars:
+
+![spatial1][spatial1]
+
+![spatial2][spatial2]
 
 #### Color histogram
 
 Taking a color histogram of an image allows us to extract useful features of an image from the color information of the image. The color information can be encoded in many different formats. Most images use RGB, and indeed when we import images the default encoding format is RGB (or BGR, if using CV2). Unfortunately, RGB encoding doesn't always provide us with the most useful distinctions when extracting features, and thus we convert images into a variety of other color spaces. Our program gives us the option to convert into the HSV, LUV, HLS, YUV, and YCrCb color spaces.
 
+Here are some example histograms of a sample image in various color spaces:
 
+**HLS**
 
+![colorhist1][colorhist1]
 
+**HSV**
 
+![colorhist2][colorhist2]
+
+**LUV**
+
+![colorhist3][colorhist3]
+
+**RGB**
+
+![colorhist4][colorhist4]
+
+**YCrCb**
+
+![colorhist5][colorhist5]
+
+**YUV**
+
+![colorhist6][colorhist6]
 
 
 
