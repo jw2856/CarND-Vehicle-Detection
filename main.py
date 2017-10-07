@@ -16,7 +16,7 @@ TRAIN = False
 # Recommended settings
 settings = {
     'color_space': 'YCrCb', # RGB, HSV, LUV, HLS, YUV, YCrCb
-    'orient': 9, #
+    'orient': 9, 
     'pix_per_cell': 8,
     'cell_per_block': 2, # helps with normalization and shadows
     'hog_channel': 'ALL',
@@ -44,7 +44,7 @@ print('Number of non-vehicle images found:', len(notcars))
 
 # helpers.visualize_bin_spatial(cars, notcars, (32, 32), 'output_images/bin_spatial_2.png')
 
-helpers.visualize_color_hist('color_hist_example.jpg', 'YUV', ['Y', 'U', 'V'], 32, (0, 255), 'output_images/color_hist_YUV.png')
+# helpers.visualize_color_hist('color_hist_example.jpg', 'YUV', ['Y', 'U', 'V'], 32, (0, 255), 'output_images/color_hist_YUV.png')
 
 if TRAIN:
     t=time.time()

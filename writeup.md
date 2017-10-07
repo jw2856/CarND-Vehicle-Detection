@@ -56,27 +56,27 @@ HOG stands for Histogram of Oriented Gradients, and is a porcine way of saying t
 
 Here are some examples of HOG features extracted for randomly sampled cars and not cars taken from the dataset, using different color spaces and channels:
 
-**HSV Channel 1**
+*HSV Channel 1*
 
 ![hog1][hog1]
 
-**RGB Channel 0**
+*RGB Channel 0*
 
 ![hog2][hog2]
 
-**RGB Channel 1**
+*RGB Channel 1*
 
 ![hog3][hog3]
 
-**YCrCb Channel 0**
+*YCrCb Channel 0*
 
 ![hog4][hog4]
 
-**YCrCb Channel 1**
+*YCrCb Channel 1*
 
 ![hog5][hog5]
 
-**YCrCb Channel 2**
+*YCrCb Channel 2*
 
 ![hog6][hog6]
 
@@ -94,27 +94,27 @@ Taking a color histogram of an image allows us to extract useful features of an 
 
 Here are some example histograms of a sample image in various color spaces:
 
-**HLS**
+*HLS*
 
 ![colorhist1][colorhist1]
 
-**HSV**
+*HSV*
 
 ![colorhist2][colorhist2]
 
-**LUV**
+*LUV*
 
 ![colorhist3][colorhist3]
 
-**RGB**
+*RGB*
 
 ![colorhist4][colorhist4]
 
-**YCrCb**
+*YCrCb*
 
 ![colorhist5][colorhist5]
 
-**YUV**
+*YUV*
 
 ![colorhist6][colorhist6]
 
