@@ -44,7 +44,7 @@ print('Number of non-vehicle images found:', len(notcars))
 
 # helpers.visualize_bin_spatial(cars, notcars, (32, 32), 'output_images/bin_spatial_2.png')
 
-# helpers.visualize_color_hist(example_images[0], 'LUV', ['L', 'U', 'V'], 32, (0, 255), 'output_images/color_hist_LUV.png')
+helpers.visualize_color_hist('color_hist_example.jpg', 'YUV', ['Y', 'U', 'V'], 32, (0, 255), 'output_images/color_hist_YUV.png')
 
 if TRAIN:
     t=time.time()
