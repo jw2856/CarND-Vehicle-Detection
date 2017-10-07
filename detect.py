@@ -308,29 +308,3 @@ def draw_labeled_bboxes(img, labels):
         cv2.rectangle(img, bbox[0], bbox[1], (0,0,255), 6)
     # Return the image
     return img
-
-# Integrate heatmap over several frames
-# def apply_threshold(heatmap, threshold):
-
-# def draw_labeled_bboxes(img, labels):
-
-# Vehicle class to track vehicle
-# def Vehicle():
-#     def __init__(self):
-#         self.detected = False
-#         self.n_detections = 0
-#         self.n_nondetections = 0
-#         self.xpixels = None
-#         self.ypixels = None
-#         self.recent_xfitted = []
-#         self.bestx = None
-#         self.recent_yfitted []
-#         self.besty = None
-#         self.recent_wfitted = []
-#         self.bestw = None
-#         self.recent_hfitted = []
-#         self.besth = None
-
-# What is this good for
-# carslist = []
-# carslist.append(Vehicle())
