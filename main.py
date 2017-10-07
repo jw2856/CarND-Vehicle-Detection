@@ -34,10 +34,10 @@ example_images = glob.glob(path)
 # sample image once on the entire image and then take each block separately
 
 # Make a list of images to read in
-cars = helpers.read_filenames_into_array('vehicles/', write_to_file=True, filename='cars.txt')
+cars = helpers.read_filenames_into_array('vehicles/', write_to_file=False, filename='cars.txt')
 print('Number of vehicle images found:', len(cars))
 
-notcars = helpers.read_filenames_into_array('non-vehicles/', write_to_file=True, filename='not_cars.txt')
+notcars = helpers.read_filenames_into_array('non-vehicles/', write_to_file=False, filename='not_cars.txt')
 print('Number of non-vehicle images found:', len(notcars))
 
 # helpers.visualize_car_notcar(cars, notcars, settings, 'output_images/car_notcar_visualization_YCrCb_channel0.png')
