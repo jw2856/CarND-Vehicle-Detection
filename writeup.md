@@ -27,6 +27,13 @@ The goals / steps of this project are the following:
 [colorhist5]: ./output_images/color_hist_YCrCb.png
 [colorhist6]: ./output_images/color_hist_YUV.png
 
+[testmodel_rgb]: ./output_images/test_images_result_rgb_128_window_50_overlap.png
+[testmodel_hls]: ./output_images/test_images_result_hls_128_window_50_overlap.png
+[testmodel_hsv]: ./output_images/test_images_result_hsv_128_window_50_overlap.png
+[testmodel_luv]: ./output_images/test_images_result_luv_128_window_50_overlap.png
+[testmodel_ycrcb]: ./output_images/test_images_result_YCrCb_128_window_50_overlap.png
+[testmodel_yuv]: ./output_images/test_images_result_yuv_128_window_50_overlap.png
+
 [video1]: ./project_video.mp4
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
@@ -54,7 +61,7 @@ In `single_img_features`, the features for each image are extracted, and can ext
 
 HOG stands for Histogram of Oriented Gradients, and is a porcine way of saying that it lets us extract a directional gradient of each pixel. The algorithm calculates the gradient of each pixel and its surrounding pixels, and then returns a histogram that corresponds to the sum of the gradient values in each direction. This results in an image that very roughly detects edges and shapes.
 
-Here are some examples of HOG features extracted for randomly sampled cars and not cars taken from the dataset, using different color spaces and channels:
+Here are some examples of HOG features extracted for randomly sampled cars and not cars taken from the dataset, using orient=9, pix_per_cell=8, and cell_per_block=2, in different color spaces and channels:
 
 *HSV Channel 1*
 
@@ -118,28 +125,47 @@ Here are some example histograms of a sample image in various color spaces:
 
 ![colorhist6][colorhist6]
 
-
-
-
-
-
-
-
-
-The code for this step is contained in the first code cell of the IPython notebook (or in lines # through # of the file called `some_file.py`).  
-
-I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
-
-![alt text][image1]
-
-I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
-
-Here is an example using the `YCrCb` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
-
-
-![alt text][image2]
-
 #### Parameters
+
+To select parameters, I trained an SVM on a subset of the dataset using each of the colorspaces three times each using identical orientation, pixels per cell, cells per block, and hog channel settings. I then took the average of the accuracies for each on the models on the validation set. Here were the results:
+
+RGB: 93.667%
+HSV: 94.167%
+LUV: 93.667%
+HLS: 94.833%
+YUV: 93.833%
+YCrCb: 94.33%
+
+From these results, I took the HLS, HSV, and YCrCb, and varied the orientation, pixels per cell, cells per block, and hog channel parameters to see the impact on the validation accuracy. The best result I achieved at this point was with an HLS color space, using `hog_channel=ALL`, `orient=9`, `pix_per_cell=8` and `cell_per_block=2`.
+
+However, to be more confident about my choice of parameters, I wanted to have a visualization of how each classifier performed on the test images. So I trained various models using different color spaces with the other parameters held constant and ran the test images through them to see how them performed.
+
+HLS, windows=(128, 128), 50% overlap
+
+![testmodel_hls][testmodel_hls]
+
+HSV, windows=(128, 128), 50% overlap
+
+![testmodel_hsv][testmodel_hsv]
+
+LUV, windows=(128, 128), 50% overlap
+
+![testmodel_luv][testmodel_luv]
+
+RGB, windows=(128, 128), 50% overlap
+
+![testmodel_rgb][testmodel_rgb]
+
+YCrCb, windows=(128, 128), 50% overlap
+
+![testmodel_ycrcb][testmodel_ycrcb]
+
+YUV, windows=(128, 128), 50% overlap
+
+![testmodel_yuv][testmodel_yuv]
+
+
+
 
 I tried various combinations of parameters and...
 
